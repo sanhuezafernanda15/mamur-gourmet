@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones B2B - Mamur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .b2b-box { max-width: 800px; margin: 4rem auto; background-color: var(--azul-oscuro); color: var(--blanco); padding: 5rem 4rem; border-radius: 12px; text-align: center; }
+        .b2b-box p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2.5rem; }
+        
+        /* MODAL */
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,27,61,0.7); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition: var(--transition); z-index: 2000;}
+        .modal-overlay.active { opacity:1; pointer-events:auto; }
+        .modal-box { background: var(--bg-crema); color: var(--texto-oscuro); padding: 3rem; width:100%; max-width:460px; border-radius:8px; position:relative; border: 1px solid var(--dorado); }
+        .modal-close { position:absolute; top:1.2rem; right:1.2rem; cursor:pointer; font-size:1.3rem; }
+        .form-group { margin-bottom: 1.2rem; text-align: left; }
+        .form-group label { display:block; font-size:0.8rem; font-weight:600; margin-bottom:0.4rem; text-transform:uppercase;}
+        .form-control { width:100%; padding:0.9rem; border:1px solid rgba(11,27,61,0.15); border-radius:4px; }
+        .btn-submit { width:100%; background:var(--dorado); color:var(--blanco); border:none; padding:1rem; font-weight:600; text-transform:uppercase; cursor:pointer; margin-top:1fr; border-radius:4px;}
+        .success-box { display:none; text-align:center; padding:2rem 0; }
+        .success-box i { font-size:3rem; color:#28a745; margin-bottom:1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">Mamur<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">Quiénes Somos</a></li>
+                <li class="nav-item"><a href="tienda.html" class="nav-link">Menú Personal</a></li>
+                <li class="nav-item active"><a href="corporativo.html" class="nav-link">Soluciones B2B</a></li>
+                <li>
+                    <div class="cart-icon-container" onclick="window.location.href='tienda.html'">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <div class="cart-badge" id="cart-counter">0</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <section class="section-padding">
+            <div class="b2b-box">
+                <span class="sub" style="color: var(--dorado); margin-bottom: 1rem; display:block;">Formatos de 50 a 150 unidades</span>
+                <h3 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1.5rem;">Cero Estres Logístico Institucional</h3>
+                <p>Abastecemos a banqueteras, productoras y empresas con platos y coctelería gourmet artesanal a gran escala[cite: 1, 2].</p>
+                <button class="btn-premium btn-dorado" onclick="openModal(true)">Descargar Catálogo Completo de Soluciones para Eventos</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL POPUP -->
+    <div class="modal-overlay" id="b2b-modal">
+        <div class="modal-box">
+            <i class="fa-solid fa-xmark modal-close" onclick="openModal(false)"></i>
+            
+            <div id="form-body">
+                <h3 style="font-family:var(--font-serif); margin-bottom:0.5rem;">Datos Corporativos</h3>
+                <p style="font-size:0.9rem; color:var(--texto-mutated); margin-bottom:1.5rem;">Completa la información requerida para habilitar tu descarga inmediata[cite: 1].</p>
+                <form onsubmit="handleSend(event)">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-control" required placeholder="Ej. Carlos M.">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Corporativo</label>
+                        <input type="email" class="form-control" required placeholder="Ej. corporativo@empresa.cl">
+                    </div>
+                    <button type="submit" class="btn-submit">¡Quiero mi Catálogo Gratis!</button>
+                </form>
+            </div>
+
+            <div class="success-box" id="success-body">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>¡Validación Correcta!</h3>
+                <p style="margin-bottom:1.5rem;">Tus datos de contacto han sido registrados[cite: 1].</p>
+                <a href="#" class="btn-premium btn-dorado" onclick="openModal(false); return false;"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('cart-counter').innerText = localStorage.getItem('cartCount') || 0;
+
+        function openModal(show) {
+            const modal = document.getElementById('b2b-modal');
+            if(show) {
+                document.getElementById('form-body').style.display = 'block';
+                document.getElementById('success-body').style.display = 'none';
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        function handleSend(e) {
+            e.preventDefault();
+            document.getElementById('form-body').style.display = 'none';
+            document.getElementById('success-body').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

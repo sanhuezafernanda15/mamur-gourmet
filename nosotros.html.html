@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Mamur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem; }
+        .about-story h3 { font-size: 2rem; color: var(--azul-oscuro); margin-bottom: 1.5rem; }
+        .about-story p { color: var(--texto-mutado); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .testimonials-section { background-color: var(--bg-crema-dark); border-radius: 12px; padding: 4rem 2.5rem; }
+        .testimonial-item { background: var(--blanco); padding: 2rem; border-radius: 6px; box-shadow: var(--shadow-premium); margin-bottom: 1.5rem; }
+        .testimonial-item p { font-style: italic; margin-bottom: 1rem; }
+        .testimonial-meta .name { font-weight: 700; color: var(--azul-oscuro); }
+        .testimonial-meta .role { font-size: 0.85rem; color: var(--dorado); text-transform: uppercase; margin-top: 0.2rem; display: block;}
+        .valores-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .valor-card { background: var(--blanco); padding: 2.5rem 2rem; border-radius: 8px; box-shadow: var(--shadow-premium); text-align: center; border: 1px solid rgba(197, 160, 89, 0.1); }
+        .valor-card i { font-size: 2rem; color: var(--dorado); margin-bottom: 1.5rem; }
+        .valor-card h4 { font-family: var(--font-serif); font-size: 1.3rem; color: var(--azul-oscuro); margin-bottom: 0.8rem; }
+        @media (max-width: 992px) { .about-grid, .valores-container { grid-template-columns: 1fr; gap: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">Mamur<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item active"><a href="nosotros.html" class="nav-link">Quiénes Somos</a></li>
+                <li class="nav-item"><a href="tienda.html" class="nav-link">Menú Personal</a></li>
+                <li class="nav-item"><a href="corporativo.html" class="nav-link">Soluciones B2B</a></li>
+                <li>
+                    <div class="cart-icon-container" onclick="window.location.href='tienda.html'">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <div class="cart-badge" id="cart-counter">0</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <section class="section-padding">
+            <div class="section-header">
+                <span class="sub">Nuestra Esencia</span>
+                <h2>Conócenos de Cerca</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-story">
+                    <h3>15 Años de Compromiso</h3>
+                    <p>En Mamur nos dedicamos a perfeccionar la cocina artesanal gourmet congelada, permitiendo que hogares e instituciones disfruten de platos elaborados con ingredientes de primera categoría de forma ágil.</p>
+                    <p>Nuestra gran motivación se refleja en nuestro lema insignia: <strong>"Mamur, todo lo rico sin el cansancio"</strong>. Eliminamos el agotamiento y el estrés logístico de las preparaciones masivas y cotidianas[cite: 1].</p>
+                </div>
+
+                <div class="testimonials-section">
+                    <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--azul-oscuro); margin-bottom: 1.5rem;">Prueba Social Institucional</h4>
+                    <div class="testimonial-item">
+                        <p>"Gracias a los formatos masivos colectivos de Mamur optimizamos los banquetes de nuestros eventos mensuales. Sabor casero impecable."</p>
+                        <div class="testimonial-meta">
+                            <span class="name">Gastronomía & Eventos Penquistas</span>
+                            <span class="role">Centro de Eventos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="valores-container">
+                <div class="valor-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h4>100% Hecho a Mano</h4>
+                    <p>Preservamos la calidad y las técnicas tradicionales culinarias en cada receta.</p>
+                </div>
+                <div class="valor-card">
+                    <i class="fa-solid fa-award"></i>
+                    <h4>Calidad Extra</h4>
+                    <p>Ingredientes seleccionados minuciosamente para una textura perfecta gourmet.</p>
+                </div>
+                <div class="valor-card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h4>Ahorro de Tiempo</h4>
+                    <p>Disfruta de almuerzos o banquetes complejos listos en menos de 20 minutos.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="logo">Mamur</div>
+        <p>"Mamur, todo lo rico sin el cansancio" — 2026.</p>
+    </footer>
+
+    <script>
+        document.getElementById('cart-counter').innerText = localStorage.getItem('cartCount') || 0;
+    </script>
+</body>
+</html>

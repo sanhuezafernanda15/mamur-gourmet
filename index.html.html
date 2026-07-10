@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamur - Todo lo rico sin el cansancio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero-split {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+        .hero-side {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            text-align: center;
+            transition: flex var(--transition);
+        }
+        .side-b2c {
+            background-color: var(--bg-crema-dark);
+            color: var(--azul-oscuro);
+            border-right: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .side-b2b {
+            background-color: var(--azul-oscuro);
+            color: var(--bg-crema);
+        }
+        .hero-side:hover { flex: 1.15; }
+        .tag-segmento {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            color: var(--dorado);
+        }
+        .hero-side h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem; max-width: 500px; }
+        .hero-side p { font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 420px; opacity: 0.85; }
+        @media (max-width: 992px) {
+            .hero-split { flex-direction: column; }
+            .hero-side { height: 50vh; padding: 4rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV REUTILIZABLE -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">Mamur<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">Quiénes Somos</a></li>
+                <li class="nav-item"><a href="tienda.html" class="nav-link">Menú Personal</a></li>
+                <li class="nav-item"><a href="corporativo.html" class="nav-link">Soluciones B2B</a></li>
+                <li>
+                    <div class="cart-icon-container" onclick="window.location.href='tienda.html'">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <div class="cart-badge" id="cart-counter">0</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SPLIT -->
+    <main class="hero-split">
+        <div class="hero-side side-b2c">
+            <div class="tag-segmento">Mamur Personal (B2C)</div>
+            <h1>Mamur en tu Hogar</h1>
+            <p>Soluciones caseras premium. Todo el sabor artesanal directo a tu mesa, listo en minutos.</p>
+            <a href="tienda.html" class="btn-premium btn-azul">Ver Platos Personales</a>
+        </div>
+        <div class="hero-side side-b2b">
+            <div class="tag-segmento">Mamur Empresas (B2B)</div>
+            <h1>Soluciones Corporativas</h1>
+            <p>Calidad artesanal y cero estrés logístico para banqueteras, eventos masivos e instituciones.</p>
+            <a href="corporativo.html" class="btn-premium btn-dorado">Cotizar Formatos Masivos</a>
+        </div>
+    </main>
+
+    <script>
+        // Cargar contador del carrito desde localStorage si existe
+        document.getElementById('cart-counter').innerText = localStorage.getItem('cartCount') || 0;
+    </script>
+</body>
+</html>

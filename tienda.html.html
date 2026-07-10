@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Gourmet - Mamur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .product-card { background: var(--blanco); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-premium); border: 1px solid rgba(197, 160, 89, 0.1); display: flex; flex-direction: column; transition: var(--transition); }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img-placeholder { height: 220px; background-color: var(--azul-oscuro); position: relative; display: flex; justify-content: center; align-items: center; color: rgba(253, 251, 247, 0.3); }
+        .product-img-placeholder i { font-size: 3rem; }
+        .badge-premium { position: absolute; top: 1rem; left: 1rem; background-color: var(--dorado); color: var(--blanco); font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 50px; text-transform: uppercase; }
+        .product-info { padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--azul-oscuro); }
+        .product-info p { color: var(--texto-mutado); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .product-meta-row { display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; }
+        .btn-add-cart { background: none; border: 1px solid var(--azul-oscuro); padding: 0.6rem 1.2rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: var(--transition); }
+        .btn-add-cart:hover { background-color: var(--azul-oscuro); color: var(--blanco); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">Mamur<span>.</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">Quiénes Somos</a></li>
+                <li class="nav-item active"><a href="tienda.html" class="nav-link">Menú Personal</a></li>
+                <li class="nav-item"><a href="corporativo.html" class="nav-link">Soluciones B2B</a></li>
+                <li>
+                    <div class="cart-icon-container">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <div class="cart-badge" id="cart-counter">0</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <section class="section-padding">
+            <div class="section-header">
+                <span class="sub">Llevar al Hogar</span>
+                <h2>Catálogo Premium Individual</h2>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-placeholder">
+                        <span class="badge-premium">Casero / Premium</span>
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lasaña Bolognesa Artesanal</h3>
+                        <p>Pasta fresca intercalada con ragú de res tradicional hecho en casa y gratinado de mozzarella.</p>
+                        <div class="product-meta-row">
+                            <span class="product-price">$9.990</span>
+                            <button class="btn-add-cart" onclick="addCart()">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-placeholder">
+                        <span class="badge-premium">Casero / Premium</span>
+                        <i class="fa-solid fa-shrimp"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Salmón Grillado con Quinoa</h3>
+                        <p>Filete de salmón grillado en su punto sobre una base nutritiva de quinoa y vegetales salteados.</p>
+                        <div class="product-meta-row">
+                            <span class="product-price">$11.990</span>
+                            <button class="btn-add-cart" onclick="addCart()">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer><div class="logo">Mamur</div></footer>
+
+    <script>
+        let currentCount = parseInt(localStorage.getItem('cartCount')) || 0;
+        document.getElementById('cart-counter').innerText = currentCount;
+
+        function addCart() {
+            currentCount++;
+            localStorage.setItem('cartCount', currentCount);
+            document.getElementById('cart-counter').innerText = currentCount;
+        }
+    </script>
+</body>
+</html>
